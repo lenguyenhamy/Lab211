@@ -31,6 +31,17 @@ public class Validate {
     private Validate() {
     }
 
+    /**
+     * Returns a string format phone number from the keyboard.
+     *
+     * @param messageInfo           message info
+     * @param messageErrorInvalid   message error when input invalid number
+     * @param messageErrorMaxlength message error when input max length
+     * @param REGEX                 the pattern to test string is valid or not
+     * @return the string value
+     * @throws NumberFormatException
+     * @throws PhoneNumberMaxLengthException
+     */
     public static String getPhoneNumber(
             String messageInfo,
             String messageErrorInvalid,
