@@ -1,29 +1,13 @@
 package util;
 
+import constant.IConstant;
 import exception.PhoneNumberMaxLengthException;
 
 import java.util.Scanner;
 
 public class Validate {
 
-    private static Scanner scanner = new Scanner(System.in);
-
-    public static final String REGEX_NUMBER = "^\\d+$";
-
-    public static final String REGEX_EMAIL = "^[\\w-\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
-
-    public static final String REGEX_DATE =
-            "^(?:(?:31(\\/|-|\\.)(?:0?[13578]|1[02]))\\1|"
-                    + "(?:(?:29|30)(\\/|-|\\.)"
-                    + "(?:0?[1,3-9]|1[0-2])\\2))"
-                    + "(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$"
-                    + "|^(?:29(\\/|-|\\.)0?2\\3(?:(?:(?:1[6-9]|[2-9]\\d)"
-                    + "?(?:0[48]|[2468][048]|[13579][26])|"
-                    + "(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]"
-                    + "|1\\d|2[0-8])(\\/|-|\\.)(?:(?:0?[1-9])"
-                    + "|(?:1[0-2]))\\4(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$";
-
-    private static final int PHONE_NUMBER_LENGTH = 10;
+    private static final Scanner SCANNER = new Scanner(System.in);
 
     /**
      * Don't let anyone instantiate this class.
@@ -32,15 +16,15 @@ public class Validate {
     }
 
     /**
-     * Returns a string format phone number from the keyboard.
+     * Returns the valid string phone number scanned from the input.
      *
-     * @param messageInfo           message info
-     * @param messageErrorInvalid   message error when input invalid number
-     * @param messageErrorMaxlength message error when input max length
-     * @param REGEX                 the pattern to test string is valid or not
-     * @return the string value
-     * @throws NumberFormatException
-     * @throws PhoneNumberMaxLengthException
+     * @param messageInfo           the message to be printed instructing the user to input
+     * @param messageErrorInvalid   the message will be printed if the String does not contain a parsable integer
+     * @param messageErrorMaxlength the message will be printed if the String does not satisfy the maximum length
+     * @param REGEX                 the pattern to test String is valid or not
+     * @return the valid string phone number scanned from the input
+     * @throws NumberFormatException         if the String does not contain a parsable int
+     * @throws PhoneNumberMaxLengthException if the String does not satisfy the maximum length
      */
     public static String getPhoneNumber(
             String messageInfo,
@@ -50,10 +34,10 @@ public class Validate {
     ) throws NumberFormatException, PhoneNumberMaxLengthException {
 
         System.out.print(messageInfo);
-        String str = scanner.nextLine();
+        String str = SCANNER.nextLine();
 
         if (str.matches(REGEX)) {
-            if (str.length() == PHONE_NUMBER_LENGTH) {
+            if (str.length() == IConstant.PHONE_NUMBER_LENGTH) {
                 return str;
             } else {
                 throw new PhoneNumberMaxLengthException(messageErrorMaxlength);
@@ -64,17 +48,17 @@ public class Validate {
     }
 
     /**
-     * Returns an input string from the keyboard.
+     * Returns the valid string scanned from the input.
      *
-     * @param messageInfo  message info
-     * @param messageError message error
-     * @param REGEX        the pattern to test string is valid or not
-     * @return the string value
+     * @param messageInfo  the message to be printed instructing the user to input
+     * @param messageError the message will be printed if the input does not match the regular expression
+     * @param REGEX        the pattern to test String is valid or not
+     * @return the valid string value
      */
     public static String getString(String messageInfo, String messageError, final String REGEX) {
         do {
             System.out.print(messageInfo);
-            String str = scanner.nextLine();
+            String str = SCANNER.nextLine();
             if (str.matches(REGEX)) {
                 return str;
             }
