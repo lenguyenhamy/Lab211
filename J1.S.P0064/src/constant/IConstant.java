@@ -7,6 +7,7 @@ public interface IConstant {
     String REGEX_NUMBER = "^\\d+$";
 
     String REGEX_EMAIL = "^[\\w-\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
+    
     String REGEX_DATE =
             "^(?:(?:31(\\/|-|\\.)(?:0?[13578]|1[02]))\\1|"
                     + "(?:(?:29|30)(\\/|-|\\.)"
