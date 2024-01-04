@@ -19,8 +19,6 @@
     - `menu()`
     - `isContinue()`
     - `getCurrentYear()`
-    
-  - `IConstant`: chứa tất cả REGEX dùng để validate dữ liệu.
 
 <br />
 
@@ -41,4 +39,9 @@
 - `main`: chứa lớp main function
   - `CandidateManager`
   
+<br />
+
+- `constant`: chứa constant
+  - `IConstant`: chứa tất cả REGEX dùng để validate dữ liệu.
+
 <br />
